@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opalus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .content {
+            margin-top: 60px;
+            padding: 20px;
+        }
+        .item {
+            background: #f4f4f4;
+            margin: 10px 0;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#">Menu</a>
+        <a href="#">Nosotros</a>
+        <a href="#">Contacto</a>
+    </div>
+    <div class="content" id="content">
+        <!-- Initial content -->
+    </div>
+    <script>
+        const contentDiv = document.getElementById('content');
+        let counter = 1;
+        
+        function loadMoreContent() {
+            for (let i = 0; i < 5; i++) {
+                const div = document.createElement('div');
+                div.classList.add('item');
+                div.textContent = 'Item ' + counter++;
+                contentDiv.appendChild(div);
+            }
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
+                loadMoreContent();
+            }
+        });
+        
+        // Initial load
+        loadMoreContent();
+    </script>
+</body>
+</html>
+
